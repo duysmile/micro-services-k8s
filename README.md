@@ -80,3 +80,32 @@ kubectl apply -f k8s/task/service.yml
 curl localhost:8082/ping
 # pong
 ```
+
+6. Install Kong and Postgres
+- Create new namespace `kong`
+```bash
+kubectl apply -f k8s/kong/namespace.yml
+```
+
+- Create PV and PVC
+```bash
+kubectl apply -f k8s/kong/pg_pv_claim.yml
+```
+
+- Create Postgres deployment and service
+```bash
+kubectl apply -f k8s/kong/pg_deployment.yml
+kubectl apply -f k8s/kong/pg_service.yml
+```
+
+- Create kong ingress for services:
+```bash
+kubectl apply -f k8s/<service-name>/ingress.yml
+
+# Example
+kubectl apply -f k8s/auth/ingress.yml
+kubectl apply -f k8s/member/ingress.yml
+kubectl apply -f k8s/notification/ingress.yml
+kubectl apply -f k8s/report/ingress.yml
+kubectl apply -f k8s/task/ingress.yml
+```
