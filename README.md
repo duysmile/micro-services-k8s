@@ -1,5 +1,7 @@
 # Build micro-services in k8s
 
+Guide: https://maple-bass-e96.notion.site/Lab-k8s-a010e868b50f45afacf2bc4200f0a1c4
+
 We will build a team management system with 5 basic modules:
 - Auth
 - Member
