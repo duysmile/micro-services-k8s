@@ -90,10 +90,16 @@ We will build a team management system with 5 basic modules:
     # pong
     ```
 
-6. Install Kong for Kubernetes
-    - Install directly from manifest
+6. Setup Kong for Kubernetes
+
+    - Install Kong:
     ```bash
-    kubectl create -f https://bit.ly/k4k8s
+    kubectl apply -f kong/namespace.yml
+    kubectl apply -f kong/pv_claim.yml
+    kubectl apply -f kong/deployment.yml
+    kubectl apply -f kong/service.yml
+    kubectl apply -f kong/migration.yml
+    kubectl apply -f kong/custom.yml
     ```
 
     - Create ingress for all services:
@@ -120,4 +126,21 @@ We will build a team management system with 5 basic modules:
     curl localhost:3000/task/ping
     curl localhost:3000/report/ping
     ```
+
+     - Install Konga:
+    ```bash
+    kubectl apply -f konga/migration.yml
+    kubectl apply -f konga/deployment.yml
+    kubectl apply -f konga/service.yml
+    ```
+
+    - Port forward konga:
+    ```bash
+    kubectl port-forward -n kong service/konga-svc 1337:1337
+    ```
+
+    - Setting in Konga admin:
+        - Admin URL: `http://kong-proxy:8000`
+
+
 
