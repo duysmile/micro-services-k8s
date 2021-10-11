@@ -3,11 +3,12 @@ const { connectMongo } = require('./helpers/connect_db');
 const memberRouter = require('./router');
 
 function apiLoader(app) {
-    app.use(memberRouter);
+    app.use('/member', memberRouter);
 }
 
 async function run(db) {
     const app = createApp({
+        serviceName: '/member',
         apiLoader,
         db,
     });

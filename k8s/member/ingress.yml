@@ -8,9 +8,9 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/"
+        path: "/member"
         backend:
           service:
             name: member
             port:
-              number: 3000
+              number: 80

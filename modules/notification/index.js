@@ -3,11 +3,12 @@ const { connectMongo } = require('./helpers/connect_db');
 const notificationRouter = require('./router');
 
 function apiLoader(app) {
-    app.use(notificationRouter);
+    app.use('/notification', notificationRouter);
 }
 
 async function run(db) {
     const app = createApp({
+        serviceName: '/notification',
         apiLoader,
         db,
     });

@@ -3,11 +3,12 @@ const { connectMongo } = require('./helpers/connect_db');
 const taskRouter = require('./router');
 
 function apiLoader(app) {
-    app.use(taskRouter);
+    app.use('/task', taskRouter);
 }
 
 async function run(db) {
     const app = createApp({
+        serviceName: '/task',
         apiLoader,
         db,
     });

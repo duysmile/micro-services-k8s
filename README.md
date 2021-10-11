@@ -59,7 +59,6 @@ kubectl apply -f k8s/member/deployment.yml
 kubectl apply -f k8s/notification/deployment.yml
 kubectl apply -f k8s/report/deployment.yml
 kubectl apply -f k8s/task/deployment.yml
-
 ```
 
 - Run service in k8s to connect pod
@@ -74,6 +73,14 @@ kubectl apply -f k8s/report/service.yml
 kubectl apply -f k8s/task/service.yml
 ```
 
+Now you can test everything work by run `port-forward`:
+```bash
+kubectl port-forward service/auth 3000:80
+
+curl localhost:3000/ping
+# pong
+```
+
 5. Access auth service
 - When you finish all command above, you can test access to `auth service`
 ```bash
@@ -81,24 +88,13 @@ curl localhost:8082/ping
 # pong
 ```
 
-6. Install Kong and Postgres
-- Create new namespace `kong`
+6. Install Kong for Kubernetes
+- Install directly from manifest
 ```bash
-kubectl apply -f k8s/kong/namespace.yml
+kubectl create -f https://bit.ly/k4k8s
 ```
 
-- Create PV and PVC
-```bash
-kubectl apply -f k8s/kong/pg_pv_claim.yml
-```
-
-- Create Postgres deployment and service
-```bash
-kubectl apply -f k8s/kong/pg_deployment.yml
-kubectl apply -f k8s/kong/pg_service.yml
-```
-
-- Create kong ingress for services:
+- Create ingress for all services:
 ```bash
 kubectl apply -f k8s/<service-name>/ingress.yml
 
@@ -109,3 +105,17 @@ kubectl apply -f k8s/notification/ingress.yml
 kubectl apply -f k8s/report/ingress.yml
 kubectl apply -f k8s/task/ingress.yml
 ```
+
+- After finish above command
+```bash
+# Port forwarding to kong proxy
+kubectl -n kong port-forward service/kong-proxy 3000:80
+
+# Check service available
+curl localhost:3000/auth/ping
+curl localhost:3000/notification/ping
+curl localhost:3000/member/ping
+curl localhost:3000/task/ping
+curl localhost:3000/report/ping
+```
+

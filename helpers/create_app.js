@@ -10,6 +10,7 @@ function createApp({
     errorHandler = function(err, req, res, next) {
         return res.status(400).send(err.message);
     },
+    serviceName = "",
     db,
 }) {
     const app = express();
@@ -19,7 +20,7 @@ function createApp({
     app.db = db;
 
     // Setup API
-    app.get('/ping', (_, res) => res.send('pong'));
+    app.get(`${serviceName}/ping`, (_, res) => res.send('pong'));
     apiLoader(app);
 
     // Use option as error handler
