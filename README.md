@@ -10,7 +10,8 @@ We will build a team management system with 5 basic modules:
 - Task
 
 ### Guide
-1. Build service images
+
+#### 1. Build service images
     ```bash
     docker build -t <image-name>:<image-ver> --build-arg SERVICE=<service-name> .
 
@@ -22,7 +23,7 @@ We will build a team management system with 5 basic modules:
     docker build -t notification:v1 --build-arg SERVICE=notification .
     ```
 
-2. Tag and Push image to docker hub
+#### 2. Tag and Push image to docker hub
     ```bash
     docker tag auth:v1 <your-docker-hub-user>/<image-name>:<version>
 
@@ -43,14 +44,14 @@ We will build a team management system with 5 basic modules:
     docker push duynguyen21vnlp/ms-notification:v1
     ```
 
-3. Create secret for docker hub
+#### 3. Create secret for docker hub
     ```bash
     kubectl create secret generic regcred \
         --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
         --type=kubernetes.io/dockerconfigjson
     ```
 
-4. Run service in k8s
+#### 4. Run service in k8s
     - Each service will run in a deployment: `deployment.yml`
     ```bash
     kubectl apply -f k8s/<service-name>/deployment.yml
@@ -83,14 +84,14 @@ We will build a team management system with 5 basic modules:
     # pong
     ```
 
-5. Access auth service
+#### 5. Access auth service
     - When you finish all command above, you can test access to `auth service`
     ```bash
     curl localhost:8082/ping
     # pong
     ```
 
-6. Setup Kong for Kubernetes
+#### 6. Setup Kong for Kubernetes
 
     - Install Kong:
     ```bash
