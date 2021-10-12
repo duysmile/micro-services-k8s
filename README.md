@@ -142,5 +142,14 @@ We will build a team management system with 5 basic modules:
     - Setting in Konga admin:
         - Admin URL: `http://kong-proxy:8000`
 
+    - Setting JWT và Auth service: https://medium.com/velacorpblog/tri%E1%BB%83n-khai-api-gateway-cho-microservice-v%E1%BB%9Bi-kong-2a746939be13
+
+    - Một vài câu hỏi với API Gateway:
+    1. Có thể và có nên tự setup API Gateway không?
+    2. Nếu dùng Kong thì khi có identifier mới thì đều phải lưu trữ ở db của Kong, hoặc phải thiết kế DB theo format của Kong, có đúng không?
+    3. Có thể custom service register theo business không, và có dễ dàng không?
+
+
+
 
 
