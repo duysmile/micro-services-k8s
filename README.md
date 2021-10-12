@@ -142,7 +142,22 @@ We will build a team management system with 5 basic modules:
     - Setting in Konga admin:
         - Admin URL: `http://kong-proxy:8000`
 
-    - Setting JWT và Auth service: https://medium.com/velacorpblog/tri%E1%BB%83n-khai-api-gateway-cho-microservice-v%E1%BB%9Bi-kong-2a746939be13
+    - Setting JWT và Auth service:
+        - https://medium.com/velacorpblog/tri%E1%BB%83n-khai-api-gateway-cho-microservice-v%E1%BB%9Bi-kong-2a746939be13
+        - https://medium.com/@tselentispanagis/managing-microservices-and-apis-with-kong-and-konga-7d14568bb59d
+        - https://viblo.asia/p/trien-khai-api-gateway-len-kubernetes-voi-kong-api-gateway-konga-va-postgresql-Do754z44ZM6
+        -
+
+    - Flow sử dụng JWT plugin
+    ```
+     _____  Request  _____  verify JWT   __________
+    |User | ------> |Kong | ----------> | Services |
+     -----           -----               ----------
+    ```
+
+    - Có thể custom Auth Service với Kong: https://konghq.com/blog/custom-authentication-and-authorization-framework-with-kong/
+    - Nhưng có vấn đề là phải viết bằng Lua :(, mặc dù có code sẵn cho plugin nhưng cũng sẽ khó custom nếu không biết Lua.
+
 
     - Một vài câu hỏi với API Gateway:
     1. Có thể và có nên tự setup API Gateway không?
