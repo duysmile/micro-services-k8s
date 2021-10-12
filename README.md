@@ -147,7 +147,6 @@ kubectl port-forward -n kong service/konga-svc 1337:1337
     - https://medium.com/velacorpblog/tri%E1%BB%83n-khai-api-gateway-cho-microservice-v%E1%BB%9Bi-kong-2a746939be13
     - https://medium.com/@tselentispanagis/managing-microservices-and-apis-with-kong-and-konga-7d14568bb59d
     - https://viblo.asia/p/trien-khai-api-gateway-len-kubernetes-voi-kong-api-gateway-konga-va-postgresql-Do754z44ZM6
-    -
 
 - Flow sử dụng JWT plugin
 
