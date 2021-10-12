@@ -149,11 +149,7 @@ We will build a team management system with 5 basic modules:
         -
 
     - Flow sử dụng JWT plugin
-    ```
-     _____  Request  _____  verify JWT   __________
-    |User | ------> |Kong | ----------> | Services |
-     -----           -----               ----------
-    ```
+    ![Flow](https://2tjosk2rxzc21medji3nfn1g-wpengine.netdna-ssl.com/wp-content/uploads/2020/07/FY21_Q1_Degui_Xu.jpg.webp)
 
     - Có thể custom Auth Service với Kong: https://konghq.com/blog/custom-authentication-and-authorization-framework-with-kong/
     - Nhưng có vấn đề là phải viết bằng Lua :(, mặc dù có code sẵn cho plugin nhưng cũng sẽ khó custom nếu không biết Lua.
