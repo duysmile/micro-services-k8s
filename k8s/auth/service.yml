@@ -3,13 +3,13 @@ kind: Service
 metadata:
   name: auth
 spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
   selector:
     app: auth
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  internalTrafficPolicy: Local
+  type: ClusterIP
 # ---
 # apiVersion: v1
 # kind: Service

@@ -23,6 +23,16 @@ spec:
         env:
           - name: PORT
             value: '80'
+          - name: AUTH_SERVICE
+            value: http://auth
+          - name: TASK_SERVICE
+            value: http://task
+          - name: MEMBER_SERVICE
+            value: http://member
+          - name: NOTIFICATION
+            value: http://notification
+          - name: REPORT
+            value: http://report
       imagePullSecrets:
       - name: regcred
         # ports:

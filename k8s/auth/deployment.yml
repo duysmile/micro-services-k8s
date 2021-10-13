@@ -1,6 +1,14 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: auth
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app.kubernetes.io/name: auth
+    app.kubernetes.io/part-of: default
   name: auth
 spec:
   replicas: 1
@@ -21,9 +29,21 @@ spec:
             memory: "128Mi"
             cpu: "100m"
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+          name: http
         env:
           - name: PORT
-            value: '80'
+            value: '8080'
+          - name: AUTH_SERVICE
+            value: http://auth
+          - name: TASK_SERVICE
+            value: http://task
+          - name: MEMBER_SERVICE
+            value: http://member
+          - name: NOTIFICATION
+            value: http://notification
+          - name: REPORT
+            value: http://report
       imagePullSecrets:
       - name: regcred
+      serviceAccountName: auth
